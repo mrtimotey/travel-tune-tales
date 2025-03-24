@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,60 +6,53 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 224 71.4% 4.1%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 224 71.4% 4.1%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 224 71.4% 4.1%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 209 100% 55%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 220 14.3% 95.9%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 224 71.4% 4.1%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 224 71.4% 4.1%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 224 71.4% 4.1%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -97,5 +91,69 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(30, 30, 35, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.landmark-image {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landmark-image:hover {
+  transform: translateY(-5px) scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes audio-wave {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 25px;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+.audio-bar {
+  display: inline-block;
+  width: 4px;
+  margin: 0 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+}
+
+.audio-bar-1 { animation: audio-wave 0.9s ease-in-out infinite; }
+.audio-bar-2 { animation: audio-wave 0.8s ease-in-out infinite 0.1s; }
+.audio-bar-3 { animation: audio-wave 1s ease-in-out infinite 0.2s; }
+.audio-bar-4 { animation: audio-wave 0.7s ease-in-out infinite 0.3s; }
+.audio-bar-5 { animation: audio-wave 0.9s ease-in-out infinite 0.4s; }
+
+.bird {
+  transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
