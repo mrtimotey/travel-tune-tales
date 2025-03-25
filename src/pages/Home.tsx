@@ -25,19 +25,11 @@ const Home: React.FC = () => {
       />
       <StaticBird 
         color="blue" 
-        position={isMobile ? { x: 80, y: 20 } : { x: 85, y: 32 }} 
+        position={isMobile ? { x: 80, y: 40 } : { x: 85, y: 50 }} 
         rotation={5}
         birdText="Привет! Я синяя птичка! Нажми на достопримечательность, чтобы узнать больше."
         delay={1000}
         birdImage="/birds/blue-bird-1.png"
-      />
-      <StaticBird 
-        color="yellow" 
-        position={isMobile ? { x: 20, y: 50 } : { x: 25, y: 70 }} 
-        rotation={-8}
-        birdText="Привет! Я еще одна желтая птичка! Наслаждайся путешествием по России!"
-        delay={2000}
-        birdImage="/birds/yellow-bird-2.png"
       />
       
       <div className="container mx-auto px-4 py-8 md:py-12">
