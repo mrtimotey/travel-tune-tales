@@ -14,13 +14,14 @@ const Home: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden">
       <BackgroundImage variant="home" />
       
-      {/* Статичные птички */}
+      {/* Статичные птички с индивидуальными изображениями */}
       <StaticBird 
         color="yellow" 
         position={isMobile ? { x: 12, y: 15 } : { x: 15, y: 25 }} 
         rotation={-5}
         birdText="Привет! Я желтая птичка! Добро пожаловать в аудиогид по России."
         delay={0}
+        birdImage="/birds/yellow-bird-1.png"
       />
       <StaticBird 
         color="blue" 
@@ -28,6 +29,7 @@ const Home: React.FC = () => {
         rotation={5}
         birdText="Привет! Я синяя птичка! Нажми на достопримечательность, чтобы узнать больше."
         delay={1000}
+        birdImage="/birds/blue-bird-1.png"
       />
       <StaticBird 
         color="yellow" 
@@ -35,6 +37,7 @@ const Home: React.FC = () => {
         rotation={-8}
         birdText="Привет! Я еще одна желтая птичка! Наслаждайся путешествием по России!"
         delay={2000}
+        birdImage="/birds/yellow-bird-2.png"
       />
       
       <div className="container mx-auto px-4 py-8 md:py-12">

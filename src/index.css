@@ -6,81 +6,68 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    --foreground: 222.2 47.4% 11.2%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+    --popover-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 12 79% 52%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 225 60% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-
-    --accent: 32 100% 60%;
+    --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    --ring: 215 20.2% 65.1%;
 
-    --radius: 1.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 40% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 32 100% 60%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 12 79% 52%;
+    --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -88,75 +75,13 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-.backdrop-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-}
-
-.glass-dark {
-  background: rgba(30, 30, 35, 0.7);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.landmark-image {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.landmark-image:hover {
-  transform: translateY(-5px) scale(1.02);
-  filter: brightness(1.05);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-}
-
-@keyframes audio-wave {
-  0% {
-    height: 10px;
-  }
-  50% {
-    height: 25px;
-  }
-  100% {
-    height: 10px;
-  }
-}
-
-.audio-bar {
-  display: inline-block;
-  width: 4px;
-  margin: 0 2px;
-  border-radius: 2px;
-  background-color: currentColor;
-}
-
-.audio-bar-1 { animation: audio-wave 0.9s ease-in-out infinite; }
-.audio-bar-2 { animation: audio-wave 0.8s ease-in-out infinite 0.1s; }
-.audio-bar-3 { animation: audio-wave 1s ease-in-out infinite 0.2s; }
-.audio-bar-4 { animation: audio-wave 0.7s ease-in-out infinite 0.3s; }
-.audio-bar-5 { animation: audio-wave 0.9s ease-in-out infinite 0.4s; }
-
-/* Фоновые изображения для разных страниц */
+/* Фоновые изображения */
 .bg-image-home {
   background-image: url('/background-home.jpg');
 }
@@ -165,37 +90,39 @@
   background-image: url('/background-detail.jpg');
 }
 
-/* Медиазапросы для мобильных устройств с соотношением 9:16 */
-@media screen and (max-width: 768px) and (aspect-ratio: 9/16), 
-       screen and (max-width: 768px) and (aspect-ratio: 9/19) {
-  .glass-card {
-    padding: 1rem;
-    border-radius: 1rem;
-  }
-  
-  :root {
-    --radius: 1rem;
-  }
-  
+/* Стилизация карточек с достопримечательностями */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.landmark-image {
+  transition: transform 0.5s;
+}
+
+.glass-card:hover .landmark-image {
+  transform: scale(1.05);
+}
+
+/* Оптимизация для 9:16 разрешения (телефоны) */
+@media (max-aspect-ratio: 9/16) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 12px;
+    padding-right: 12px;
   }
-}
 
-/* Оптимизированный стиль для мобильных устройств */
-@media screen and (max-width: 768px) {
-  html, body {
-    overflow-x: hidden;
+  h1 {
+    font-size: 1.75rem;
   }
-  
-  .bg-image-home, .bg-image-detail {
-    background-size: cover;
-    background-position: center;
-  }
-}
 
-.rounded-image {
-  border-radius: 24px;
-  overflow: hidden;
+  .glass-card {
+    margin-bottom: 16px;
+  }
 }
