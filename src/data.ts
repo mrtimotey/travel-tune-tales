@@ -14,7 +14,7 @@ export const landmarks: Landmark[] = [
       "https://um.mos.ru/_next/image/?url=https%3A%2F%2Fum.mos.ru%2Fcontent%2Fiblock%2F804%2F9410b8a443c58d4dee9d548e37af2583.jpg&w=1920&q=75",
       "https://cs1.megabaz.ru/253/bf13ec5a3a94.jpg"
     ],
-    audioFile: "https://drive.google.com/file/d/1NQkmugHh3FQuOj0JQzAbITSLuKAUO9ON/view",
+    audioFile: "https://drive.usercontent.google.com/download?id=1NQkmugHh3FQuOj0JQzAbITSLuKAUO9ON&export=download&authuser=0&confirm=t&uuid=8cbb6381-6589-4945-a4bc-6374dc874e5b&at=AEz70l50yNA7LM-ZWSW9APCJYweG:1742999069811",
     location: "Москва, район северное Тушино",
     facts: [
       "Северному Тушино уже почти 700 лет!",
