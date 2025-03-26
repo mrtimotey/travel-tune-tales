@@ -11,8 +11,8 @@ const BackgroundImage: React.FC<BackgroundImageProps> = ({ variant = 'home' }) =
   
   // Используем разные классы для разных вариантов фона
   const bgClassName = variant === 'home' 
-    ? 'bg-image-home' 
-    : 'bg-image-detail';
+    ? 'bg.png' 
+    : 'bg.png';
   
   return (
     <div className={`fixed inset-0 -z-10 ${bgClassName} bg-cover bg-center pointer-events-none`}>
