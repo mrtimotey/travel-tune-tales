@@ -228,7 +228,7 @@ export const landmarks: Landmark[] = [
       "https://avatars.mds.yandex.net/i?id=959ff02901945ecb8024e6c0fbe40ce5_l-9848498-images-thumbs&n=13",
       "https://avatars.mds.yandex.net/i?id=375014b3aaa029012af1d69d3691a608_l-5283588-images-thumbs&n=13"
     ],
-    audioFile: "audio/curonian_spit.mp3",
+    audioFile: "https://1524.cold-rtc.strm.yandex.net/music-v2/raw/ysign1=b02b18f556fcded9ffa539d6da2aa9ba517215faf8639fefb7acef394f9211d4,lid=1524,pfx,secret_version=ver-1,sfx,source=mds,ts=67f25ba7/0/14560702/u/103f8fc3-a616-486b-b987-e66f9e5bd2a8.1/2.mp3",
     location: "Калининградская область, Куршская коса",
     facts: [
       "Протяжённость Куршской косы составляет 98 км",
