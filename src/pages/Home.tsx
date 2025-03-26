@@ -14,18 +14,20 @@ const Home: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden">
       <BackgroundImage variant="home" />
       
-      {/* Статичные птички с индивидуальными изображениями */}
+      {/* Yellow bird sitting on the top edge of the first card */}
       <StaticBird 
         color="yellow" 
-        position={isMobile ? { x: 12, y: 15 } : { x: 15, y: 25 }} 
+        position={isMobile ? { x: 12, y: 42 } : { x: 15, y: 48 }} 
         rotation={-5}
         birdText="Привет! Я желтая птичка! Добро пожаловать в аудиогид по России."
         delay={0}
         birdImage="/birds/yellow-bird-1.png"
       />
+      
+      {/* Blue bird sitting on the right side of the description area */}
       <StaticBird 
         color="blue" 
-        position={isMobile ? { x: 80, y: 40 } : { x: 85, y: 50 }} 
+        position={isMobile ? { x: 80, y: 25 } : { x: 85, y: 33 }} 
         rotation={5}
         birdText="Привет! Я синяя птичка! Нажми на достопримечательность, чтобы узнать больше."
         delay={1000}

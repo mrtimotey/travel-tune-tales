@@ -15,7 +15,7 @@ interface BirdProps {
   rotation?: number;
   birdText: string;
   delay?: number;
-  birdImage: string; // Новое свойство для хранения пути к PNG изображению птицы
+  birdImage: string;
 }
 
 const StaticBird: React.FC<BirdProps> = ({ 
@@ -61,11 +61,12 @@ const StaticBird: React.FC<BirdProps> = ({
   return (
     <>
       <motion.div 
-        className="absolute cursor-pointer z-10"
+        className="absolute cursor-pointer z-20"
         style={{ 
           left: `${position.x}%`, 
           top: `${position.y}%`,
-          transform: `rotate(${rotation}deg)`
+          transform: `rotate(${rotation}deg)`,
+          transformOrigin: 'bottom center', // Make birds appear to be sitting
         }}
         onClick={() => setIsDialogOpen(true)}
       >

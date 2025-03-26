@@ -45,20 +45,22 @@ const LandmarkDetail: React.FC = () => {
     <div className="min-h-screen overflow-x-hidden">
       <BackgroundImage variant="detail" />
       
-      {/* Птицы */}
+      {/* Blue bird sitting on the top edge of the image */}
       <StaticBird 
         color="blue" 
-        position={isMobile ? { x: 15, y: 12 } : { x: 20, y: 25 }} 
+        position={isMobile ? { x: 15, y: 28 } : { x: 20, y: 33 }} 
         rotation={-5}
-        birdText={`Привет! Это ${landmark.name} - прекрасное место для посещения!`}
+        birdText={`Привет! Это ${landmark?.name} - прекрасное место для посещения!`}
         delay={500}
         birdImage="/birds/blue-bird-1.png"
       />
+      
+      {/* Yellow bird sitting on the description text area */}
       <StaticBird 
         color="yellow" 
-        position={isMobile ? { x: 75, y: 18 } : { x: 75, y: 35 }} 
+        position={isMobile ? { x: 75, y: 52 } : { x: 30, y: 65 }} 
         rotation={5}
-        birdText={`${landmark.name} имеет богатую историю. Послушай аудиогид, чтобы узнать больше!`}
+        birdText={`${landmark?.name} имеет богатую историю. Послушай аудиогид, чтобы узнать больше!`}
         delay={2000}
         birdImage="/birds/yellow-bird-1.png"
       />
