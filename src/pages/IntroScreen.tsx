@@ -35,7 +35,7 @@ const IntroScreen: React.FC = () => {
         onDragEnd={handleDragEnd}
       >
         <img 
-          src='https://2.downloader.disk.yandex.ru/preview/bc4a4b4353c2b7611aa7fceee881c740d98aff74ed8424cf948b23033abf1511/inf/BszWjr7AlYgFAAv-0qpplvKPDO0WMo7PcA1uippSaBEb9QOhUuELyfbuowc8I8Jrg5_dcf3CjMfpiwWUrbOTBw%3D%3D?uid=1488535573&filename=intro.gif&disposition=inline&hash=&limit=0&content_type=image%2Fgif&owner_uid=1488535573&tknv=v2&size=1866x920' 
+          src='https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385.jpg' 
           alt="Intro Animation" 
           className="w-full h-full object-cover"
         />
