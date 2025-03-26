@@ -15,6 +15,7 @@ const Home: React.FC = () => {
       <BackgroundImage variant="home" />
       
       {/* Yellow bird sitting on the top edge of the first card */}
+      {/*
       <StaticBird 
         color="yellow" 
         position={isMobile ? { x: 12, y: 42 } : { x: 15, y: 48 }} 
@@ -22,9 +23,11 @@ const Home: React.FC = () => {
         birdText="Привет! Я желтая птичка! Добро пожаловать в аудиогид по России."
         delay={0}
         birdImage="/birds/yellow-bird-1.png"
+       
       />
-      
+      */}
       {/* Blue bird sitting on the right side of the description area */}
+      {/*
       <StaticBird 
         color="blue" 
         position={isMobile ? { x: 80, y: 25 } : { x: 85, y: 33 }} 
@@ -33,7 +36,7 @@ const Home: React.FC = () => {
         delay={1000}
         birdImage="/birds/blue-bird-1.png"
       />
-      
+      */}
       <div className="container mx-auto px-4 py-8 md:py-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
