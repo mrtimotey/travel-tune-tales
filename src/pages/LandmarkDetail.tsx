@@ -46,6 +46,7 @@ const LandmarkDetail: React.FC = () => {
       <BackgroundImage variant="detail" />
       
       {/* Blue bird sitting on the top edge of the image */}
+      {/*
       <StaticBird 
         color="blue" 
         position={isMobile ? { x: 15, y: 28 } : { x: 20, y: 33 }} 
@@ -54,8 +55,9 @@ const LandmarkDetail: React.FC = () => {
         delay={500}
         birdImage="/birds/blue-bird-1.png"
       />
-      
+      */}
       {/* Yellow bird sitting on the description text area */}
+      {/*
       <StaticBird 
         color="yellow" 
         position={isMobile ? { x: 75, y: 52 } : { x: 30, y: 65 }} 
@@ -64,7 +66,7 @@ const LandmarkDetail: React.FC = () => {
         delay={2000}
         birdImage="/birds/yellow-bird-1.png"
       />
-      
+      */}
       <div className="container mx-auto px-4 py-6 md:py-12">
         <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4 md:mb-8 transition-colors">
           <ArrowLeft size={20} className="mr-2" />
