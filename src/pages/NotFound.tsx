@@ -27,6 +27,7 @@ const NotFound = () => {
         rotation={-5}
         birdText="Ой! Кажется, вы заблудились. Такой страницы не существует."
         delay={0}
+        birdImage="/birds/yellow-bird-1.png"
       />
 
       <motion.div 

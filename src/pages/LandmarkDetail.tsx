@@ -52,6 +52,7 @@ const LandmarkDetail: React.FC = () => {
         rotation={-5}
         birdText={`Привет! Это ${landmark.name} - прекрасное место для посещения!`}
         delay={500}
+        birdImage="/birds/blue-bird-1.png"
       />
       <StaticBird 
         color="yellow" 
@@ -59,6 +60,7 @@ const LandmarkDetail: React.FC = () => {
         rotation={5}
         birdText={`${landmark.name} имеет богатую историю. Послушай аудиогид, чтобы узнать больше!`}
         delay={2000}
+        birdImage="/birds/yellow-bird-1.png"
       />
       
       <div className="container mx-auto px-4 py-6 md:py-12">
