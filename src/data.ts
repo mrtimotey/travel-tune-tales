@@ -1,240 +1,182 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowLeft, MapPin, Info } from 'lucide-react';
+import { landmarks } from '../data';
+import AudioPlayer from '../components/AudioPlayer';
+import StaticBird from '../components/StaticBird';
+import BackgroundImage from '../components/BackgroundImage';
+import { useIsMobile } from '../hooks/use-mobile';
 
-import { Landmark } from "./types";
-
-// This placeholder data would be replaced with real information about landmarks
-export const landmarks: Landmark[] = [
-  {
-    id: 1,
-    name: "Северное Тушино",
-    subtitle: "Район москвы с увлекательной историей",
-    description: "Первые летописные упоминания о землях современного Тушина приходятся на XIV век. Тогда это место называлось Коробовским. В первой половине XIV века владельцем земель стал воевода Тушин. В XVII веке Тушино стало известно далеко за пределами России: с 1608 г. по 1610 г. здесь был лагерь Лжедмитрия II, выдававшего себя за сына Ивана Грозного. Важным событием в истории Северного Тушина стало строительство канала Москва-Волга и создание Химкинского водохранилища. Первые строители пришли сюда в 1932 году. Силами заключенных строилась дамба будущего водохранилища. Канал был пущен в строй в 1937 году. Еще один важный объект — Центральный аэродром полярной авиации Севморпути. Отсюда отправлялись экспедиции на дрейфующие станции, вылетали самолеты для ведения ледовой разведки, для спасения попавших в беду полярников. В 1960 году город Тушино (Московская область) вошел в состав столицы. Массовая застройка территории района развернулась в конце 60 начале 70 годов. Как и все районы массовой застройки, Северное Тушино поначалу было сугубо «спальным». Однако за 54 года его инфраструктура развилась настолько, что таковым его не назовешь. Это своеобразный город в городе. На территории Северного Тушина находятся крупнейшие научно-исследовательские институты, колледж малого бизнеса, школы, дошкольные учреждения, родильный дом, Дом ребенка, Тушинская детская городская больница, Пансионат для ветеранов войны и труда. В Северном Тушино хорошо развита транспортная сеть: две станции метро «Сходненская» и «Планерная» удобно и быстро связывают район с центром столицы. С соседними районами Северное Тушино связывают автобусы, троллейбусы, трамваи. Существует удобная связь с аэропортом «Шереметьево» и Северным речным портом, от станции метро «Планерная» до г. Химки действует троллейбусный маршрут. В Северном Тушино развита торговая сеть: магазины, кафе, предприятия бытового обслуживания. Излюбленным местом досуга и детей, и взрослых является прекрасный парк культуры и отдыха «Северное Тушино», расположенный на живописном берегу Химкинского водохранилища. Экологическая ценность благотворного сочетания зеленых насаждений и воды усиливается и крайне удачной «розой ветров». Красивые аллеи, концертные и спортивные площадки, аттракционы — здесь есть все атрибуты современного парка культуры. С каждым годом хорошеет Северное Тушино. Сносятся старые пятиэтажки, строятся новые дома, украшаются улицы и благоустраиваются дворы!",
-    images: [
-      "https://avatars.dzeninfra.ru/get-zen_doc/3381150/pub_63b2f422a2fc0a2d67df40ad_63f081ff70ad167a409f8570/scale_1200",
-      "https://sun9-66.userapi.com/impf/c636222/v636222259/10319/UAQhtxvFsbA.jpg?size=1014x716&quality=96&sign=9deb516dbc40ac984e4bbebaecd0cfee&c_uniq_tag=eykwDnnys_cZdYXqXR_v8xMXgNjPZsnancv8mbv6hnI&type=album",
-      "https://um.mos.ru/_next/image/?url=https%3A%2F%2Fum.mos.ru%2Fcontent%2Fiblock%2F804%2F9410b8a443c58d4dee9d548e37af2583.jpg&w=1920&q=75",
-      "https://cs1.megabaz.ru/253/bf13ec5a3a94.jpg"
-    ],
-    audioFile: "audio/tushino.mp3",
-    location: "Москва, район северное Тушино",
-    facts: [
-      "Северному Тушино уже почти 700 лет!",
-      "Площадь Северного Тушино - 9.4 квадратных километров!"
-    ]
-  },
-  {
-    id: 2,
-    name: "Церковь Покрова Пресвятой Богородицы",
-    subtitle: "Одна из самых древних церквей Северного Тушино",
-    description: "Красная площадь — главная площадь Москвы, расположенная в центре города между Кремлём и Китай-городом. Она является одним из самых узнаваемых символов России и местом проведения важных государственных мероприятий. Название 'Красная' изначально не имело политического подтекста и произошло от древнерусского слова 'красный', что означало 'красивый', 'главный'.",
-    images: [
-      "https://avatars.mds.yandex.net/get-altay/13072111/2a0000018ee19780fb6c0c383d003686d70f/XXXL",
-      "https://images.unsplash.com/photo-1520106212299-d99c443e4568?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/red_square.mp3",
-    location: "Москва, Красная площадь",
-    facts: [
-      "Общая площадь составляет около 70 000 квадратных метров",
-      "В 1990 году Красная площадь была включена в список Всемирного наследия ЮНЕСКО",
-      "На Красной площади находится Мавзолей В.И. Ленина"
-    ]
-  },
-  {
-    id: 3,
-    name: "Аэродром 'Захарково'",
-    subtitle: "Играл огромную роль в защите Москвы в ВоВ",
-    description: "Озеро Байкал — уникальный природный объект, расположенный в южной части Восточной Сибири. Это самое глубокое озеро на Земле и крупнейший природный резервуар пресной воды. Байкал также является одним из древнейших озёр мира, его возраст оценивается примерно в 25-30 миллионов лет. В озере обитает множество эндемичных видов растений и животных.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=68bee67964c1cc2fc209ed9a482367cd_l-10411335-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1552735855-557bdba3961a?q=80&w=2089&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1617164794020-9e366dda645e?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/baikal.mp3",
-    location: "Восточная Сибирь, между Иркутской областью и Республикой Бурятия",
-    facts: [
-      "Максимальная глубина Байкала составляет 1642 метра",
-      "В Байкале содержится около 20% мировых запасов пресной воды",
-      "Вода в Байкале настолько прозрачна, что можно увидеть предметы на глубине до 40 метров"
-    ]
-  },
-  {
-    id: 4,
-    name: "Улица Свободы",
-    subtitle: "Главная улица в Северном Тушино",
-    description: "Петергоф — дворцово-парковый ансамбль на южном берегу Финского залива в Петродворцовом районе Санкт-Петербурга. Он был основан Петром I в начале XVIII века как парадная императорская резиденция. Петергоф известен своими многочисленными фонтанами и называется 'Русским Версалем'. Центральное место занимает Большой каскад — грандиозный водный комплекс.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=6c34f9b64e7e73af17c1aecc3a462d38_l-9870394-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1599498448014-820ffed08221?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/peterhof.mp3",
-    location: "Санкт-Петербург, Петергоф, Разводная улица, 2",
-    facts: [
-      "Система фонтанов Петергофа работает без применения насосов",
-      "В Петергофе насчитывается более 150 фонтанов",
-      "Петергоф включен в список Всемирного наследия ЮНЕСКО"
-    ]
-  },
-  {
-    id: 5,
-    name: "Улица Героев Панциловцев",
-    subtitle: "Улица является символом памяти о героях",
-    description: "Эльбрус — стратовулкан на Кавказе, на границе республик Кабардино-Балкария и Карачаево-Черкесия. Эльбрус является самой высокой горной вершиной России и Европы, входит в список высочайших вершин частей света 'Семь вершин'. Гора имеет две вершины — западную высотой 5642 м и восточную высотой 5621 м.",
-    images: [
-      "https://gp17k2.ru/wp-content/uploads/2023/02/pamyatnik-geroyam-panfilovczam.jpg",
-      "https://images.unsplash.com/photo-1629409903932-fd8d7a3f0e84?q=80&w=2069&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1623341514304-3b5187fc2fd1?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/elbrus.mp3",
-    location: "Кавказские горы, на границе Кабардино-Балкарии и Карачаево-Черкесии",
-    facts: [
-      "Эльбрус — потухший вулкан, последнее извержение которого датируется примерно 50 г. н.э.",
-      "На склонах Эльбруса расположен самый высокогорный горнолыжный курорт России",
-      "На вершину Эльбруса ежегодно поднимаются тысячи альпинистов"
-    ]
-  },
-  {
-    id: 6,
-    name: "Улица Фомичёвой",
-    subtitle: "Названа в честь летчицы из отряда 'Ночные Ведьмы'",
-    description: "Кижи — остров на Онежском озере в Республике Карелия, на котором расположен всемирно известный архитектурный ансамбль, построенный в XVIII-XIX веках. Главной достопримечательностью острова является 22-главая Преображенская церковь, построенная в 1714 году без единого гвоздя. В 1990 году архитектурный ансамбль острова Кижи был включен в список Всемирного наследия ЮНЕСКО.",
-    images: [
-      "https://photos.wikimapia.org/p/00/06/14/62/55_full.jpg",
-      "https://images.unsplash.com/photo-1567432316013-087ff51ddd94?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1631267534468-c17dd6086c59?q=80&w=2071&auto=format&fit=crop"
-    ],
-    audioFile: "audio/kizhi.mp3",
-    location: "Республика Карелия, Онежское озеро, остров Кижи",
-    facts: [
-      "Преображенская церковь построена без использования гвоздей",
-      "Купола церкви покрыты 30 000 осиновых лемехов",
-      "Церковь имеет 22 главы разного размера"
-    ]
-  },
-  {
-    id: 7,
-    name: "Метро Планерная",
-    subtitle: "Конечная станция Таганско-Краснопресненской линии",
-    description: "Долина гейзеров — это одно из наиболее крупных гейзерных полей в мире и единственное в Евразии. Расположена на Камчатке в Кроноцком государственном биосферном заповеднике. Долина представляет собой глубокий каньон реки Гейзерной, в бортах которого на площади около 6 км² находятся многочисленные выходы гейзеров, горячих источников, грязевых котлов, термальных площадок.",
-    images: [
-      "https://sun1-88.userapi.com/s/v1/ig2/vQ1FrgdlHolEA8-cfnoWpRpPbpATsR4hm4inVkoY4yY0AgMfaUONpeTtYe9v3mUroUUJA-aveo0SXvJsl2JcNvbl.jpg?quality=95&as=32x20,48x30,72x45,108x68,160x100,240x150,360x226,480x301,540x338,640x401,720x451,1080x677,1280x802,1440x903,1538x964&from=bu&u=QrQECwVjR-CIQGH-w6cupn6f61sVNUTvBLrWE8jUqlM&cs=807x506",
-      "https://images.unsplash.com/photo-1511101614347-899cdb602a5c?q=80&w=2069&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1528791071175-83810f4d792f?q=80&w=2087&auto=format&fit=crop"
-    ],
-    audioFile: "audio/geysers.mp3",
-    location: "Камчатский край, Кроноцкий государственный заповедник",
-    facts: [
-      "Долина гейзеров была открыта в 1941 году геологом Татьяной Устиновой",
-      "В долине насчитывается около 90 гейзеров и множество термальных источников",
-      "Попасть в Долину гейзеров можно только на вертолете или в рамках многодневного пешего похода"
-    ]
-  },
-  {
-    id: 8,
-    name: "Метро Сходненская",
-    subtitle: "Одна из самых загруженных станций метро в районе",
-    description: "Мамаев курган — возвышенность на правом берегу реки Волги в Центральном районе города Волгограда, где во время Сталинградской битвы происходили ожесточённые бои. Сейчас на Мамаевом кургане находится памятник-ансамбль 'Героям Сталинградской битвы', центральной фигурой которого является статуя 'Родина-мать зовёт!' — одна из самых высоких статуй мира.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=774e0e0d83c2c7a14e84083459131a01_l-5427576-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1557645254-f6d9a21d0a8f?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1625860652072-fe40226d2d0f?q=80&w=1974&auto=format&fit=crop"
-    ],
-    audioFile: "audio/mamaev_kurgan.mp3",
-    location: "Волгоград, Мамаев курган",
-    facts: [
-      "Высота статуи 'Родина-мать зовёт!' составляет 85 метров вместе с мечом",
-      "В период Сталинградской битвы склоны кургана были полностью выжжены и лишены растительности",
-      "В кургане захоронено около 35 000 солдат и офицеров, погибших во время Сталинградской битвы"
-    ]
-  },
-  {
-    id: 9,
-    name: "Парк 'Северное Тушино'",
-    subtitle: "Лёгкие района Северное Тушино",
-    description: "Петропавловская крепость — крепость в Санкт-Петербурге, расположенная на Заячьем острове, историческое ядро города. Заложена 16 мая 1703 года по приказу Петра I. Здесь находится Петропавловский собор — усыпальница российских императоров, Монетный двор, тюрьма Трубецкого бастиона и другие исторические здания и музеи.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=46e3ff29ebf70171a2e3177f09871927_l-5452187-images-thumbs&n=33&w=1621&h=1080",
-      "https://images.unsplash.com/photo-1552737894-aae873ee2737?q=80&w=2069&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1605276241987-a9c7c3a0da12?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/petropavlovskaya.mp3",
-    location: "Санкт-Петербург, Петропавловская крепость",
-    facts: [
-      "День основания крепости считается днём основания Санкт-Петербурга",
-      "Шпиль Петропавловского собора достигает высоты 122,5 метра",
-      "С 1736 года в полдень из пушки Нарышкина бастиона производится полуденный выстрел"
-    ]
-  },
-  {
-    id: 10,
-    name: "'Новосибирский комсомолец'",
-    subtitle: "Музейный экспонат - боевая подводная лодка",
-    description: "Золотое кольцо России — туристический маршрут, проходящий по древним городам Северо-Восточной Руси, в которых сохранились уникальные памятники истории и культуры России. В Золотое кольцо традиционно включают восемь основных городов: Сергиев Посад, Переславль-Залесский, Ростов Великий, Ярославль, Кострома, Иваново, Суздаль и Владимир.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=e9fc73d10e87c891e326aa833f628c6d_l-5235114-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1594393504916-92f383c351c9?q=80&w=2069&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1572783350654-05e7deaec7ca?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/golden_ring.mp3",
-    location: "Центральная Россия",
-    facts: [
-      "Термин 'Золотое кольцо' был введён в 1967 году журналистом Юрием Бычковым",
-      "Общая протяжённость классического маршрута — около 700 км",
-      "В 2017 году отмечалось 50-летие Золотого кольца России"
-    ]
-  },
-  {
-    id: 11,
-    name: "Экраноплан 'Орлёнок'",
-    subtitle: "Уникальное изобретение советских инженеров",
-    description: "Казанский кремль — древнейшая часть Казани, комплекс архитектурных, исторических и археологических памятников. Расположен на мысу высокой террасы левого берега Волги и левого берега Казанки. В 2000 году Казанский кремль был включён в список Всемирного наследия ЮНЕСКО. На территории кремля находятся Благовещенский собор, мечеть Кул-Шариф, башня Сююмбике и другие исторические здания.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=e6267c92b3dd4db5e8f159e1e7aa3a51_l-5259124-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1593175780189-788aea8af5e7?q=80&w=2071&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1590922100355-c35d6a3e4b08?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/kazan_kremlin.mp3",
-    location: "Казань, Кремль",
-    facts: [
-      "Казанский кремль является единственным в России действующим татарским кремлём",
-      "Башня Сююмбике — архитектурный символ Казани, высотой около 58 метров",
-      "Мечеть Кул-Шариф — одна из крупнейших мечетей в России и Европе"
-    ]
-  },
-  {
-    id: 12,
-    name: "'Скат'",
-    subtitle: "Десантно-штурмовой катер на воздушной подушке",
-    description: "Соловецкие острова — архипелаг в Белом море на входе в Онежскую губу. Административно относится к Приморскому району Архангельской области. Включает шесть крупных и более 100 малых островов. На островах расположен Соловецкий монастырь, один из крупнейших и известнейших в России. В 1992 году историко-культурный ансамбль Соловецких островов был включён в список Всемирного наследия ЮНЕСКО.",
-    images: [
-      "https://sun9-2.userapi.com/impf/c851228/v851228355/783ec/4mnnOzy30Oc.jpg?size=604x330&quality=96&sign=c015471b2324785579b3e2ccef45f2df&type=album",
-      "https://images.unsplash.com/photo-1571686683059-3e8bcfcbfdb0?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1603466906286-7ae8e37521af?q=80&w=2070&auto=format&fit=crop"
-    ],
-    audioFile: "audio/solovki.mp3",
-    location: "Архангельская область, Белое море",
-    facts: [
-      "В советский период на Соловках располагался один из первых лагерей особого назначения — СЛОН",
-      "Соловецкий монастырь был основан в 1436 году монахами Зосимой и Германом",
-      "На Соловках находится уникальная система каналов, созданная монахами в XVI-XVII веках"
-    ]
-  },
-  {
-    id: 13,
-    name: "Канал им. Москвы",
-    subtitle: "Один из знаковых проектов советского времени",
-    description: "Куршская коса — песчаная коса, расположенная на побережье Балтийского моря и Куршского залива. Является полуостровом, отделённым от материка узким проливом. Территория косы разделена между Россией и Литвой. В 2000 году российская часть Куршской косы включена в список Всемирного наследия ЮНЕСКО. Коса известна своими песчаными дюнами высотой до 60 метров.",
-    images: [
-      "https://avatars.mds.yandex.net/i?id=959ff02901945ecb8024e6c0fbe40ce5_l-9848498-images-thumbs&n=13",
-      "https://images.unsplash.com/photo-1543177950-dcdcdec45d67?q=80&w=2071&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?q=80&w=2072&auto=format&fit=crop"
-    ],
-    audioFile: "audio/curonian_spit.mp3",
-    location: "Калининградская область, Куршская коса",
-    facts: [
-      "Протяжённость Куршской косы составляет 98 км",
-      "Ширина косы колеблется от 400 м до 3,8 км",
-      "Часть косы занимает национальный парк 'Куршская коса'"
-    ]
+const LandmarkDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const isMobile = useIsMobile();
+  
+  const landmark = landmarks.find(l => l.id === Number(id));
+  
+  const nextImage = () => {
+    if (!landmark) return;
+    setCurrentImageIndex((prev) => (prev + 1) % landmark.images.length);
+  };
+  
+  const prevImage = () => {
+    if (!landmark) return;
+    setCurrentImageIndex((prev) => (prev - 1 + landmark.images.length) % landmark.images.length);
+  };
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  if (!landmark) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Достопримечательность не найдена</h2>
+          <Link to="/" className="text-primary hover:underline">Вернуться на главную</Link>
+        </div>
+      </div>
+    );
   }
-];
+
+  // Прямая ссылка на аудиофайл
+  const audioSrc = 'https://downloader.disk.yandex.ru/disk/fcefbede08400d2fcdbd4571951d9d6b6e9d2d32242dcd00e52d3c6f33f04188/67e4a2cd/IM4GGGn94cFgzbkkaxB_Lopji7OYxe4ceIKJrFynnTx8J7rHIW19ptEf5Vunkj7-OH-l3BNjUdKQH03o2iHQ6Q%3D%3D?uid=0&filename=%D1%81%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%BE%D0%B5%20%D1%82%D1%83%D1%88%D0%B8%D0%BD%D0%BE.mp3&disposition=attachment&hash=264xddf76WM03sdT/lzHfcRLZbk7udLoJ/uZQo9aS6fUUm2hCQELFiMvVI0G9eIVq/J6bpmRyOJonT3VoXnDag%3D%3D&limit=0&content_type=audio%2Fmpeg&owner_uid=1488535573&fsize=2579029&hid=4dbc3c448e819e4d484796a85ed5217d&media_type=audio&tknv=v2';
+
+  return (
+    <div className="min-h-screen overflow-x-hidden">
+      <BackgroundImage variant="detail" />
+      
+      {/* Blue bird sitting on the top edge of the image */}
+      {/*
+      <StaticBird 
+        color="blue" 
+        position={isMobile ? { x: 15, y: 28 } : { x: 20, y: 33 }} 
+        rotation={-5}
+        birdText={`Привет! Это ${landmark?.name} - прекрасное место для посещения!`}
+        delay={500}
+        birdImage="/birds/blue-bird-1.png"
+      />
+      */}
+      {/* Yellow bird sitting on the description text area */}
+      {/*
+      <StaticBird 
+        color="yellow" 
+        position={isMobile ? { x: 75, y: 52 } : { x: 30, y: 65 }} 
+        rotation={5}
+        birdText={`${landmark?.name} имеет богатую историю. Послушай аудиогид, чтобы узнать больше!`}
+        delay={2000}
+        birdImage="/birds/yellow-bird-1.png"
+      />
+      */}
+      <div className="container mx-auto px-4 py-6 md:py-12">
+        <Link to="/" className="inline-flex items-center text-primary hover:text-primary/80 mb-4 md:mb-8 transition-colors">
+          <ArrowLeft size={20} className="mr-2" />
+          Назад к списку
+        </Link>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 md:mb-8"
+        >
+          <span className="text-sm font-medium text-white bg-primary px-3 py-1 rounded-full">
+            Аудиогид
+          </span>
+          <h1 className="text-3xl md:text-5xl font-bold mt-4 mb-2 text-secondary">{landmark.name}</h1>
+          <p className="text-lg md:text-xl text-gray-600">{landmark.subtitle}</p>
+        </motion.div>
+        
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 mb-8 md:mb-12">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full lg:w-7/12"
+          >
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src={landmark.images[currentImageIndex]} 
+                alt={landmark.name} 
+                className="w-full h-full object-cover"
+              />
+              
+              {landmark.images.length > 1 && (
+                <>
+                  <button 
+                    onClick={prevImage}
+                    className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/80 backdrop-blur flex items-center justify-center hover:bg-white transition-colors"
+                  >
+                    <ArrowLeft size={isMobile ? 16 : 20} />
+                  </button>
+                  <button 
+                    onClick={nextImage}
+                    className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/80 backdrop-blur flex items-center justify-center hover:bg-white transition-colors"
+                  >
+                    <ArrowLeft size={isMobile ? 16 : 20} className="transform rotate-180" />
+                  </button>
+                  
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {landmark.images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full ${
+                          index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            
+            <div className="mt-6 md:mt-8">
+              <AudioPlayer audioSrc={audioSrc} title="Аудиогид" />
+              
+              <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 mt-6 text-secondary">Описание</h2>
+              <p className="text-gray-700 leading-relaxed mb-6 md:mb-8">
+                {landmark.description}
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-full lg:w-5/12"
+          >
+            <div className={isMobile ? "" : "sticky top-8"}>
+              <div className="glass-card rounded-2xl p-4 md:p-6 mb-6 md:mb-8">
+                <div className="flex items-center mb-4">
+                  <MapPin size={isMobile ? 18 : 20} className="text-primary mr-2" />
+                  <h3 className="text-base md:text-lg font-medium">Расположение</h3>
+                </div>
+                <p className="text-gray-700">{landmark.location}</p>
+              </div>
+              
+              <div className="glass-card rounded-2xl p-4 md:p-6">
+                <div className="flex items-center mb-4">
+                  <Info size={isMobile ? 18 : 20} className="text-primary mr-2" />
+                  <h3 className="text-base md:text-lg font-medium">Интересные факты</h3>
+                </div>
+                <ul className="space-y-2 md:space-y-3">
+                  {landmark.facts.map((fact, index) => (
+                    <li key={index} className="flex">
+                      <span className="text-primary mr-2">•</span>
+                      <span className="text-gray-700 text-sm md:text-base">{fact}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LandmarkDetail;
