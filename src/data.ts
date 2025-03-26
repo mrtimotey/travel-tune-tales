@@ -9,7 +9,7 @@ export const landmarks: Landmark[] = [
     subtitle: "Один из крупнейших художественных музеев мира",
     description: "Государственный Эрмитаж — один из крупнейших и старейших музеев мира, расположенный в городе Санкт-Петербург. Он был основан в 1764 году, когда императрица Екатерина II приобрела коллекцию произведений искусства у берлинского купца Иоганна Эрнста Гоцковского. Сегодня в коллекции Эрмитажа находится около трех миллионов произведений искусства и памятников мировой культуры.",
     images: [
-      "https://images.unsplash.com/photo-1556610961-2fecc5927173?q=80&w=2070&auto=format&fit=crop",
+      "https://sun9-66.userapi.com/impf/c636222/v636222259/10319/UAQhtxvFsbA.jpg?size=1014x716&quality=96&sign=9deb516dbc40ac984e4bbebaecd0cfee&c_uniq_tag=eykwDnnys_cZdYXqXR_v8xMXgNjPZsnancv8mbv6hnI&type=album",
       "https://images.unsplash.com/photo-1631119487782-374da94e8555?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1564159408142-929486c2e37d?q=80&w=2074&auto=format&fit=crop"
     ],
