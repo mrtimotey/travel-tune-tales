@@ -35,7 +35,7 @@ const IntroScreen: React.FC = () => {
         onDragEnd={handleDragEnd}
       >
         <img 
-          src='https://i.pinimg.com/736x/a0/ec/1e/a0ec1e14696a74684b1bbf9c76c7dcb6.jpg' 
+          src='blob:https://mega.nz/8b2863f0-a245-4569-a277-9f9bfa8cc3d9' 
           alt="Intro Animation" 
           className="w-full h-full object-cover"
         />
