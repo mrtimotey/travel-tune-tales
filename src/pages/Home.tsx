@@ -44,9 +44,9 @@ const Home: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 md:mb-12"
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-secondary">Аудиогид по России</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-secondary">Аудиогид по Тушино</h1>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            Исследуйте самые впечатляющие достопримечательности России с нашими аудиогидами. 
+            Исследуйте самые впечатляющие достопримечательности Северного Тушино с нашими аудиогидами. 
             Выберите место, которое хотите посетить виртуально.
           </p>
         </motion.div>
